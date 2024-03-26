@@ -1,0 +1,139 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #242525;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 15px 50px 10px;
+    transition: all 0.5s ease;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0px 40px;
+    transition: all 0.3s ease;
+    display: inline-block; /* Ensure links are side by side */
+}
+
+.navbar-link:hover {
+    color: #40E0D0;
+}
+
+.navbar-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 6px;
+    background: #40E0D0;
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger, .hamburger::before, .hamburger::after {
+    background-color: #fff;
+    height: 2px;
+    width: 25px;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.hamburger::before, .hamburger::after {
+    content: "";
+    position: absolute;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+.hamburger.open {
+    transform: rotate(45deg);
+}
+
+.hamburger.open::before {
+    opacity: 0;
+}
+
+.hamburger.open::after {
+    transform: rotate(-90deg);
+    top: 0;
+}
+
+.links-container {
+    display: none;
+}
+
+.links-container.open {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Styles for mobile devices */
+@media only screen and (max-width: 768px) {
+    .keysoundboard-link {
+        margin-right: auto; /* This ensures the link stays on the left */
+    }
+
+    .navbar {
+        justify-content: space-between; /* Adjusted for mobile layout */
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .links-container,
+    .links-container.open {
+        position: absolute;
+        /*right: 0;*/
+        top: 75px; /* Adjust as needed */
+    }
+
+    .links-container {
+        display: none;
+        background-color: #242525;
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding: 0 50px;
+    }
+
+    .links-container.open {
+        display: block;
+    }
+
+    .navbar .navbar-link {
+        padding: 10px 20px; /* Adjusted padding for mobile */
+        display: block; /* Stack the links */
+    }
+}

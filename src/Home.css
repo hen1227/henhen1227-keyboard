@@ -1,0 +1,90 @@
+.homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: auto;
+    background-color: #0f0f0f;
+}
+
+h2 {
+    font-family: "PT Sans", "emoji", serif;
+    font-size: 42px;
+    color: #fff;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+p {
+    font-family: "PT Sans", "emoji", serif;
+    font-size: 24px;
+    color: #fff;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.app-key-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.app-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 1vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease;
+
+    width: 11vw;
+    /*height: 220px;*/
+    aspect-ratio: 1;
+    margin: 0 0.5vw;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: "PT Sans", "emoji", serif;
+}
+
+.app-key:hover {
+    transform: scale(1.02);
+}
+
+.app-key-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vw;
+
+    width: 5vw;
+    /*height: 100px;*/
+    aspect-ratio: 1;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "PT Sans", "emoji", serif;
+    color: #fff;
+    background-color: #333;
+    border-radius: 1vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.app-key-container .app-key-secondary-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.faded-key {
+    opacity: 0.5;
+}
