@@ -47,7 +47,9 @@ const SoundboardDriverPage = () => {
                 <Popup onClose={() => setShowPopup(false)}>
                     <h2>Install Driver</h2>
                     <p>Click the button below to download and install the KeySoundboard Virtual Audio Driver.</p>
-                    <Button onClick={() => {/* logic to handle download */}}>
+                    <Button onClick={() => {
+                        window.open("https://api.henhen1227.com/download/keysoundboard_driver");
+                    }}>
                         Download
                     </Button>
                 </Popup>
@@ -162,14 +164,14 @@ const SoundboardDriverPage = () => {
                 >
                     Download Installer
                 </Button>
-                <Button
-                    buttonStyle={'btn--outline'}
-                    buttonSize={'btn--large'}
-                    onClick={handleUninstallClick}
-                    destination = {'#uninstall'}
-                >
-                    Download Uninstaller
-                </Button>
+                {/*<Button*/}
+                {/*    buttonStyle={'btn--outline'}*/}
+                {/*    buttonSize={'btn--large'}*/}
+                {/*    onClick={handleUninstallClick}*/}
+                {/*    destination = {'#uninstall'}*/}
+                {/*>*/}
+                {/*    Download Uninstaller*/}
+                {/*</Button>*/}
             </div>
             <div className={'driver-subsection'}>
                 <h3>Open Source Project</h3>
