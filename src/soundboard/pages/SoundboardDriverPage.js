@@ -85,13 +85,13 @@ const SoundboardDriverPage = () => {
             </div>
             <div className={'driver-subsection'}>
                 <h3>What is it?</h3>
-                <p>KeySoundboard Virtual Audio Driver is a virtual audio driver for macOS that allows you to route audio from your computer to (almost) any streaming software, or any other application that requires a microphone input.</p>
+                <p>KeySoundboard Virtual Audio Driver is a Virtual Microphone for macOS that allows you to route audio from your computer to (almost) any streaming software, or any other application that requires a microphone input.</p>
             </div>
 
             <div className={'driver-howItWorks'}>
                 <div className={'driver-subsection'}>
                 <h3>How does it work with KeySoundboard?</h3>
-                <p>KeySoundboard will use this virtual audio device so that your sound effects can be picked up and played with your microphone.</p>
+                <p>KeySoundboard will use this virtual virtual so that your sound effects can be picked up and played with your microphone.</p>
                 </div>
                     <div className={'diagram'}>
                     <div className={"column"}>

@@ -15,6 +15,10 @@ const FAQPage = () => {
                 </div>
 
                 <div className={"faq-question"}>
+                    <h3>Why can't I access</h3>
+                </div>
+
+                <div className={"faq-question"}>
                     <h3>What is the virtual audio device?</h3>
                     <p>The virtual audio device is a tool that allows you to route audio from one application to
                         another. This is useful for streaming, recording, and other audio-related tasks.</p>
@@ -29,7 +33,7 @@ const FAQPage = () => {
 
                 <div className={"faq-question"}>
                     <h3>Why can't my friends hear the sounds on Discord?</h3>
-                    <p>They can! But you first need to have a virtual audio device installed and your microphone enabled on KeySoundboard.</p>
+                    <p>They can! But you first need to have a virtual audio device installed and your microphone enabled on KeySoundboard. Then you can select the virtual audio device as the output in the Audio Settings tab.</p>
                     <p>More information <a href={"/soundboard/driver"}>here</a>.</p>
                 </div>
             </div>

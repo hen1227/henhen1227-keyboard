@@ -15,7 +15,7 @@
     color: #fff;
     text-decoration: none;
     font-size: 20px;
-    padding: 0px 40px;
+    padding: 0 40px;
     transition: all 0.3s ease;
     display: inline-block; /* Ensure links are side by side */
 }
@@ -136,4 +136,19 @@
         padding: 10px 20px; /* Adjusted padding for mobile */
         display: block; /* Stack the links */
     }
+}
+
+
+.news-bar {
+    position: sticky;
+    background-color: #050505;
+    color: #fff;
+    padding: 2px 50px;
+    text-align: center;
+    height: 20px;
+}
+
+.news-bar p {
+    padding: 4px;
+    font-size: 15px;
 }

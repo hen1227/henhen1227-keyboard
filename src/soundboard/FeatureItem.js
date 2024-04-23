@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 
 function FeatureItem(props) {
+
+  const learnMoreLink = (link) => {
+    return <h5><Link to={link}>Learn More</Link></h5>
+  }
+
+
   return (
     <>
       <li className='features__item'>
@@ -16,6 +22,7 @@ function FeatureItem(props) {
           </figure>
           <div className='features__item__info'>
             <h5 className='features__item__text'>{props.text}</h5>
+            {props.learnMore ? learnMoreLink(props.learnMore) : ""}
           </div>
         </Link>
       </li>

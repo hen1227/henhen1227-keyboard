@@ -47,14 +47,15 @@ export default function Features() {
                       text="Combine your microphone audio with sound effects and play it to a virtual microphone"
                   />
                   <FeatureItem
-                      src={'/images/sparkleMicrophone.png'}
-                      alt="Sparkles surrounding a microphone"
-                      text='Add effects to your voice such as low pitch and high reverb'
-                  />
-                  <FeatureItem
                       src={'/images/multipleOutputs.png'}
                       alt="Three apps with sound waves coming out of them connecting to keysoundboard app icon"
                       text="Play sounds outloud and in voice calls and streams"
+                      learnMore={'/soundboard/driver'}
+                  />
+                  <FeatureItem
+                      src={'/images/sparkleMicrophone.png'}
+                      alt="Sparkles surrounding a microphone"
+                      text='Add effects to your voice such as low pitch and high reverb'
                   />
               </ul>
           </div>

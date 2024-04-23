@@ -37,6 +37,10 @@
   background: linear-gradient(180deg, #000 0%, #0f0f0f0f 12%, #0f0f0f0f 88%, #0f0f0f 100%);
 }
 
+.features-title p {
+  text-shadow: #0f0f0f ;
+}
+
 .features__container {
   display: flex;
   flex-flow: column;
@@ -113,11 +117,24 @@
   .features__items {
     display: flex;
   }
+
 }
 
 @media only screen and (max-width: 1024px) {
   .features__item {
     margin-bottom: 2rem;
+  }
+
+  .features-title {
+    padding: 40px 0;
+  }
+
+
+  .features-title p,
+  .features-title p {
+    text-shadow: #0f0f0f ;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
