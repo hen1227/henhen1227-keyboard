@@ -178,7 +178,7 @@ const SoundboardDriverPage = () => {
                 <p>KeySoundboard Virtual Audio Driver is made possible by the open-source project BlackHole, published under a GPL-3.0 License.</p>
                 <p>BlackHole is a modern macOS virtual audio driver that allows applications to pass audio to other applications with zero additional latency. <a href={"https://github.com/ExistentialAudio/BlackHole"} target={"_blank"} rel={"noopener noreferrer"}>BlackHole on GitHub</a></p>
 
-                <p>KeySoundboard's version of BlackHole is published <a href={"https://github.io/hen1227/KeySoundboard-driver"} >here</a>.</p>
+                <p>KeySoundboard's version of BlackHole is published <a href={"https://github.com/hen1227/KeySoundboardDriver"} >here</a>.</p>
             </div>
             {showPopup && renderPopup()}
         </div>

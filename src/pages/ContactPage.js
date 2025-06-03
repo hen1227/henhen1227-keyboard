@@ -18,8 +18,8 @@ const ContactPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const emailTo = 'henry@henhen1227.com';
-        const subject = encodeURIComponent('Inquiry from ' + userInput.name);
+        const emailTo = 'support@henhen1227.com';
+        const subject = encodeURIComponent('KeySoundboard Inquiry ' + userInput.name);
         const body = encodeURIComponent(`Name: ${userInput.name}\nEmail: ${userInput.email}\nMessage: ${userInput.message}`);
         window.location = `mailto:${emailTo}?subject=${subject}&body=${body}`;
     };
@@ -62,7 +62,7 @@ const ContactPage = () => {
     return (
         <div className={"subpage"} style={{ color: '#fff', backgroundColor: '#0f0f0f', padding: '20px', textAlign: 'center' }}>
             <h2>Contact</h2>
-            <p>Please reach out for help and suggestions at <b><a style={{ color: "#eee" }} href="mailto:henry@henhen1227.com">Henry@henhen1227.com</a></b> or fill out the form below.</p>
+            <p>Please reach out for help and suggestions at <b><a style={{ color: "#eee" }} href="mailto:support@henhen1227.com">Support@henhen1227.com</a></b> or fill out the form below.</p>
             <form onSubmit={handleSubmit} style={styles.form}>
                 <div>
                     <label htmlFor="name" style={styles.label}>Name:</label>

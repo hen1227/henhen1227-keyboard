@@ -15,7 +15,9 @@ const FAQPage = () => {
                 </div>
 
                 <div className={"faq-question"}>
-                    <h3>Why can't I access</h3>
+                    <h3>How do I add multiple files?</h3>
+                    <p>Simply drag the compatible sounds into the soundboard view!</p>
+                    <img src={'/images/dragAndDrop.gif'} alt={'Add multiple files'}/>
                 </div>
 
                 <div className={"faq-question"}>

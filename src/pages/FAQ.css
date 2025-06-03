@@ -13,6 +13,12 @@
     font-weight: 600;
     margin-bottom: 1rem;
 }
+.faq-question img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
 
 .faq-question p {
     font-size: 1.2rem;

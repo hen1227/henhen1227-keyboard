@@ -53,7 +53,7 @@ function Footer() {
         {/*        <div className={"logo-footer"}/> &thinsp; Henhen1227*/}
         {/*      </Link>*/}
         {/*    </div>*/}
-            <small className='website-rights'>Henry Abrahamsen © 2024</small>
+            <small className='website-rights'>© 2025 Henhen1227, LLC</small>
         {/*    <div className='social-icons'>*/}
         {/*      <Link*/}
         {/*          className='social-icon-link facebook'*/}
