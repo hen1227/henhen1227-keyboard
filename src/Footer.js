@@ -1,131 +1,63 @@
 import React from 'react';
-import './Footer.css';
 import { Link } from 'react-router-dom';
+import Icon, { BrandMark } from './components/Icon';
+import { APP_STORE_URL, SUPPORT_URL } from './config';
+import './Footer.css';
 
-export const openInNewTab = (url) => {
-  window.location.assign(url);
-};
-
-function Footer() {
+export const openInNewTab = (url) => window.location.assign(url);
+export default function Footer() {
   return (
-      <div className='footer-container'>
-        <div className='footer-links'>
-          <div className='footer-link-wrapper'>
-            <div className='footer-link-items'>
-              <h2>About </h2>
-              <Link to='https://henhen1227.com/overview'>Other Projects</Link>
-              <Link to='https://henhen1227.com/info'>More Info</Link>
-              {/*<Link to='/'><span className="greyedOut">Careers</span></Link>*/}
-              <Link to='https://henhen1227.com/terms-of-service' target="_blank">Terms of Service</Link>
-              <Link to='https://henhen1227.com/privacy' target='_blank'>Privacy Policy</Link>
-            </div>
-            <div className='footer-link-items'>
-              <h2>Contact </h2>
-              <Link to='#' onClick={
-                ()=>
-                    openInNewTab(
-                        "https://api.henhen1227.com/resume")
-              }>Resume</Link>
-              <Link to='/contact'>Contact</Link>
-              {/*<Link to='/support'>Support</Link>*/}
-              <Link to={{pathname:"https://buymeacoffee.com/HenryAbrahamsen"}} target="_blank">Donations</Link>
-              <Link to='/'></Link>
-            </div>
-          </div>
-          <div className='footer-link-wrapper'>
-            <div className='footer-link-items'>
-              <h2>Social Media</h2>
-              <Link to='#' ><span className="greyedOut">Instagram</span></Link>
-              <Link to='#'><span className="greyedOut">Facebook</span></Link>
-              <Link to='#' onClick={
-                ()=>
-                    openInNewTab(
-                        "https://www.youtube.com/@Henhen1227")
-              }>Youtube</Link>
-              <Link to='#'><span className="greyedOut">Twitter</span></Link>
-            </div>
-          </div>
+    <footer className="site-footer">
+      <div className="container footer-top">
+        <div className="footer-intro">
+          <Link to="/" className="brand">
+            <BrandMark />
+            <span>
+              KeySoundboard<span className="brand-period">.</span>
+            </span>
+          </Link>
+          <p>
+            A little sound goes a long way.
+            <br />
+            Made for your Mac. And your moments.
+          </p>
+          <span className="made-with">
+            Independently made with <Icon name="heart" size={13} />
+          </span>
         </div>
-        <section className='social-media'>
-        {/*  <div className='social-media-wrap'>*/}
-        {/*    <div className='footer-logo'>*/}
-        {/*      <Link to='/' className='social-logo'>*/}
-        {/*        <div className={"logo-footer"}/> &thinsp; Henhen1227*/}
-        {/*      </Link>*/}
-        {/*    </div>*/}
-            <small className='website-rights'>© 2025 Henhen1227, LLC</small>
-        {/*    <div className='social-icons'>*/}
-        {/*      <Link*/}
-        {/*          className='social-icon-link facebook'*/}
-        {/*        to='/'*/}
-        {/*        target='_blank'*/}
-        {/*        aria-label='Facebook'*/}
-        {/*          // onClick={*/}
-        {/*          //   ()=>*/}
-        {/*          //       openInNewTab(*/}
-        {/*          //           "https://www.youtube.com/channel/UCue90VnaIZzbN5FYsqMHsDA/featured")*/}
-        {/*          // }*/}
-        {/*      >*/}
-        {/*        <span className="greyedOut"><i className='fab fa-facebook-f' /></span>*/}
-        {/*      </Link>*/}
-        {/*      <Link*/}
-        {/*          className='social-icon-link instagram'*/}
-        {/*        to='/'*/}
-        {/*        target='_blank'*/}
-        {/*        aria-label='Instagram'*/}
-        {/*          // onClick={*/}
-        {/*          //   ()=>*/}
-        {/*          //       openInNewTab(*/}
-        {/*          //           "https://www.youtube.com/channel/UCue90VnaIZzbN5FYsqMHsDA/featured")*/}
-        {/*          // }*/}
-        {/*      >*/}
-        {/*        <span className="greyedOut"><i className='fab fa-instagram' /></span>*/}
-        {/*      </Link>*/}
-        {/*      <Link*/}
-        {/*        className='social-icon-link youtube'*/}
-        {/*        href='src/components/main/navbar/Footer#'*/}
-        {/*        target='_blank'*/}
-        {/*        aria-label='Youtube'*/}
-        {/*        to={"#"}*/}
-        {/*        onClick={*/}
-        {/*        ()=>*/}
-        {/*            openInNewTab(*/}
-        {/*            "https://www.youtube.com/@Henhen1227")*/}
-        {/*        }*/}
-        {/*      >*/}
-        {/*        <i className='fab fa-youtube' />*/}
-        {/*      </Link>*/}
-        {/*      <Link*/}
-        {/*          className='social-icon-link twitter'*/}
-        {/*        to='/'*/}
-        {/*        target='_blank'*/}
-        {/*        aria-label='Twitter'*/}
-        {/*          // onClick={*/}
-        {/*          //   ()=>*/}
-        {/*          //       openInNewTab(*/}
-        {/*          //           "https://www.youtube.com/channel/UCue90VnaIZzbN5FYsqMHsDA/featured")*/}
-        {/*          // }*/}
-        {/*      >*/}
-        {/*        <span className="greyedOut"><i className='fab fa-twitter' /></span>*/}
-        {/*      </Link>*/}
-        {/*      <Link*/}
-        {/*          className='social-icon-link twitter'*/}
-        {/*        to='/'*/}
-        {/*        target='_blank'*/}
-        {/*        aria-label='LinkedIn'*/}
-        {/*          // onClick={*/}
-        {/*          //   ()=>*/}
-        {/*          //       openInNewTab(*/}
-        {/*          //           "https://www.youtube.com/channel/UCue90VnaIZzbN5FYsqMHsDA/featured")*/}
-        {/*          // }*/}
-        {/*      >*/}
-        {/*        <span className="greyedOut"><i className='fab fa-linkedin' /></span>*/}
-        {/*      </Link>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        </section>
+        <div className="footer-column">
+          <h2>The app</h2>
+          <Link to="/soundboard/features">Features</Link>
+          <Link to="/soundboard/driver">Audio setup</Link>
+          <a href={APP_STORE_URL}>
+            Mac App Store <Icon name="external" size={13} />
+          </a>
+          <Link to="/updates">What’s new</Link>
+        </div>
+        <div className="footer-column">
+          <h2>Good to know</h2>
+          <Link to="/faq">Questions & answers</Link>
+          <a href={SUPPORT_URL}>
+            Get in touch <Icon name="external" size={13} />
+          </a>
+          <a href="https://henhen1227.com/overview">
+            Other projects <Icon name="external" size={13} />
+          </a>
+          <a href="https://buymeacoffee.com/HenryAbrahamsen">
+            Support the developer <Icon name="external" size={13} />
+          </a>
+        </div>
       </div>
+      <div className="container footer-bottom">
+        <span>© {new Date().getFullYear()} Henhen1227, LLC</span>
+        <span className="footer-tagline">
+          <span className="status-dot" /> Ready when you are.
+        </span>
+        <div>
+          <a href="https://henhen1227.com/privacy">Privacy</a>
+          <a href="https://henhen1227.com/terms-of-service">Terms</a>
+        </div>
+      </div>
+    </footer>
   );
 }
-
-export default Footer;

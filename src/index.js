@@ -4,6 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Opt into scroll reveals before the first paint, so nothing on screen is shown, hidden and shown
+// again. Without IntersectionObserver, or with reduced motion, everything simply stays visible.
+if (
+  'IntersectionObserver' in window &&
+  !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+) {
+  document.documentElement.classList.add('reveal-ready');
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

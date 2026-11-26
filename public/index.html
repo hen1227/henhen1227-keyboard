@@ -1,43 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0b0a13" />
     <meta
       name="description"
-      content="Henhen1227's KeySoundboard!"
+      content="Turn your Mac keyboard into a soundboard. Play your audio with custom shortcuts, fine-tune your effects, and share your mix in calls and streams."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--Wait
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KeySoundboard" />
+    <meta property="og:title" content="KeySoundboard — Every moment. On cue." />
+    <meta
+      property="og:description"
+      content="The perfect sound, at the perfect time. A soundboard made for Mac."
+    />
+    <meta property="og:url" content="https://keyboard.henhen1227.com/" />
+    <meta property="og:image" content="https://keyboard.henhen1227.com/logo512.png" />
+    <meta property="og:image:alt" content="The KeySoundboard app icon." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://keyboard.henhen1227.com/logo512.png" />
+    <link rel="canonical" href="https://keyboard.henhen1227.com/" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>KeySoundboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>KeySoundboard — Every moment. On cue.</title>
+    <script>
+      // Restore direct links when served by a static host such as GitHub Pages.
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var route = params.get('_route');
+        if (route && route[0] === '/' && route.slice(0, 2) !== '//') {
+          try {
+            var destination = new URL(route, window.location.origin);
+            if (destination.origin === window.location.origin) {
+              window.history.replaceState(
+                null,
+                '',
+                destination.pathname + destination.search + destination.hash
+              );
+            }
+          } catch (error) {
+            /* Leave malformed links on the homepage. */
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app. Sorry.</noscript>
+    <noscript
+      >KeySoundboard is a soundboard app for Mac. Enable JavaScript to view this site, or
+      <a href="https://apps.apple.com/us/app/keysoundboard/id1636744123?mt=12"
+        >find KeySoundboard on the Mac App Store</a
+      >.</noscript
+    >
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

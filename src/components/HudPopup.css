@@ -1,0 +1,82 @@
+.hud {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 270px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(111, 123, 255, 0.2), rgba(234, 99, 216, 0.1)),
+    rgba(28, 26, 42, 0.72);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  box-shadow:
+    0 24px 50px -18px rgba(0, 0, 0, 0.8),
+    0 0 40px -12px rgba(139, 107, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+/* The spectrum hairline, as a masked ring so the glass inside stays see-through. */
+.hud::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--spectrum-ring);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.hud-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--spectrum);
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px -3px rgba(139, 107, 255, 0.7);
+}
+.hud-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.hud-text strong {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hud-subtitle {
+  font-size: 12px;
+  color: #b5b2c9;
+}
+.hud-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #8a87a1;
+  white-space: nowrap;
+}
+.keycap.keycap-xs {
+  --depth: 1.5px;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  min-width: 0;
+}

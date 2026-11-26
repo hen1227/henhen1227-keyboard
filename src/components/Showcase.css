@@ -1,0 +1,75 @@
+.showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 40px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+.showcase.is-reversed {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+}
+.showcase.is-reversed .showcase-copy {
+  order: 2;
+}
+.showcase .eyebrow {
+  margin-bottom: 18px;
+}
+.showcase .section-copy {
+  margin-top: 22px;
+}
+.showcase ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #d6d3e8;
+}
+.showcase li svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.showcase-shot {
+  position: relative;
+  margin-right: -6%;
+}
+.showcase.is-reversed .showcase-shot {
+  margin-right: 0;
+  margin-left: -6%;
+}
+.showcase-glow {
+  position: absolute;
+  inset: 15% 12%;
+  background: var(--spectrum);
+  filter: blur(80px);
+  opacity: 0.22;
+}
+.showcase-shot .app-shot {
+  position: relative;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s var(--ease-out);
+}
+.showcase-shot:hover .app-shot {
+  transform: translateY(-6px) scale(1.01);
+}
+@media (max-width: 1000px) {
+  .showcase,
+  .showcase.is-reversed {
+    grid-template-columns: 1fr;
+  }
+  .showcase.is-reversed .showcase-copy {
+    order: 0;
+  }
+  .showcase-shot,
+  .showcase.is-reversed .showcase-shot {
+    margin: 0 -12px;
+  }
+}

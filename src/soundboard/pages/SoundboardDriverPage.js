@@ -1,190 +1,192 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import Icon from '../../components/Icon';
+import RoutingDiagram from '../../components/RoutingDiagram';
+import Showcase from '../../components/Showcase';
+import FAQList from '../../components/FAQList';
+import { LEGACY_UNINSTALLER_URL, SUPPORT_URL } from '../../config';
+import { faqs } from '../../data/faqs';
+import '../DriverSection.css';
 import './SoundboardDriverPage.css';
 import '../../pages/Pages.css';
-import Xarrow from "react-xarrows";
-import {Button} from "../../components/Button";
-import Popup from "../../components/Popup";
-import {useNavigate} from "react-router-dom";
 
-const SoundboardDriverPage = () => {
-    const navigate = useNavigate();
-    const [showPopup, setShowPopup] = useState(false);
-    const [popupContent, setPopupContent] = useState('');
+const steps = [
+  {
+    title: 'Activate the built-in driver.',
+    text: (
+      <>
+        Open <strong>KeySoundboard → Settings</strong> and choose <strong>Activate Driver</strong>.
+        There’s no separate driver installer to download.
+      </>
+    ),
+    note: (
+      <>
+        If macOS asks for approval, open <strong>System Settings → Privacy & Security</strong> and
+        approve the KeySoundboard extension. Follow any restart instructions macOS displays.
+      </>
+    ),
+  },
+  {
+    title: 'Bring your microphone into the mix.',
+    text: (
+      <>
+        Enable your microphone in KeySoundboard and select the physical mic you want to use. Allow
+        microphone access when macOS requests it.
+      </>
+    ),
+    note: (
+      <>
+        KeySoundboard mixes your voice, voice effects, and sound clips. It normally selects its own
+        virtual output automatically unless you intentionally chose another available output.
+      </>
+    ),
+  },
+  {
+    title: 'Choose KeySoundboard in your other app.',
+    text: (
+      <>
+        In your voice-chat, streaming, or recording app, open audio settings and select{' '}
+        <strong>KeySoundboard</strong> as the microphone or input device.
+      </>
+    ),
+    note: (
+      <>
+        Keep your normal headphones or speakers selected for that app’s output, so you can still
+        hear everyone else.
+      </>
+    ),
+  },
+  {
+    title: 'Give it a quick sound check.',
+    text: (
+      <>
+        Play a clip and speak into your mic. Check the input meter or microphone test in your other
+        app to confirm that both come through.
+      </>
+    ),
+    note: (
+      <>
+        If your app filters out a sound effect, check its noise suppression and automatic input
+        sensitivity settings.
+      </>
+    ),
+  },
+];
 
-    const handleHashChange = () => {
-        const hash = window.location.hash;
-        console.log(hash)
-        if (hash === '#install') {
-            setShowPopup(true);
-            setPopupContent('install');
-        } else if (hash === '#uninstall') {
-            setShowPopup(true);
-            setPopupContent('uninstall');
-        } else {
-            setShowPopup(false);
-        }
-    };
-
-    useEffect(() => {
-        // Listen for hash changes
-        window.addEventListener('hashchange', handleHashChange, false);
-        // Check the hash on initial load
-        handleHashChange();
-
-        // Cleanup
-        return () => window.removeEventListener('hashchange', handleHashChange, false);
-    }, []);
-
-    useEffect(() => {
-        if(!showPopup){
-            navigate('/soundboard/driver');
-        }
-    }, [showPopup]);
-
-    const renderPopup = () => {
-        if (popupContent === 'install') {
-            return (
-                <Popup onClose={() => setShowPopup(false)}>
-                    <h2>Install Driver</h2>
-                    <p>Click the button below to download and install the KeySoundboard Virtual Audio Driver.</p>
-                    <Button onClick={() => {
-                        window.open("https://api.henhen1227.com/download/keysoundboard_driver");
-                    }}>
-                        Download
-                    </Button>
-                </Popup>
-            );
-        } else if (popupContent === 'uninstall') {
-            return (
-                <Popup onClose={() => setShowPopup(false)}>
-                    <h2>Uninstall Driver</h2>
-                    <p>Click the button below to uninstall the KeySoundboard Virtual Audio Driver.</p>
-                    <Button onClick={() => {/* logic to handle uninstall */}}>
-                        Uninstall
-                    </Button>
-                </Popup>
-            );
-        }
-    };
-
-    const handleInstallClick = () => {
-        setShowPopup(true);
-        setPopupContent('install');
-    };
-
-    const handleUninstallClick = () => {
-        setShowPopup(true);
-        setPopupContent('uninstall');
-    };
-
-    return (
-        <div className={"driver-mainContent subpage"}>
-            <div className={"driver-title"}>
-            <h1>KeySoundboard Virtual Audio Driver</h1>
-            <p className={"subtitle"}>Powered by BlackHole</p>
-            </div>
-            <div className={'driver-subsection'}>
-                <h3>What is it?</h3>
-                <p>KeySoundboard Virtual Audio Driver is a Virtual Microphone for macOS that allows you to route audio from your computer to (almost) any streaming software, or any other application that requires a microphone input.</p>
-            </div>
-
-            <div className={'driver-howItWorks'}>
-                <div className={'driver-subsection'}>
-                <h3>How does it work with KeySoundboard?</h3>
-                <p>KeySoundboard will use this virtual virtual so that your sound effects can be picked up and played with your microphone.</p>
-                </div>
-                    <div className={'diagram'}>
-                    <div className={"column"}>
-                        <div className={"item"} id={"computer-microphone"}>
-                            <img src={"/icon/mic.png"} alt={"microphone"}/>
-                            Computer Microphone
-                        </div>
-                        <div className={"item"} id={"sound-files"}>
-                            <img src={"/icon/folder.png"} alt={"files"}/>
-                            Your sound files
-                        </div>
-                    </div>
-                    <div className={"column"}>
-                        <div className={"item"} id={"microphone-effects"}>
-                            <img src={"/icon/sparkles.png"} alt={"sparkle"}/>
-                            Special Effects
-                        </div>
-                        <div className={"item"} id={"sound-effects"}>
-                            <img src={"/icon/sparkles.png"} alt={"sparkle"}/>
-                            Special Effects
-                        </div>
-                    </div>
-                    <div className={"column"}>
-                        <div className={"item"} id={"mixer"}>
-                            <img src={"/icon/arrow.triangle.merge.png"} alt={"mixer"}/>
-                            {/*<img src={"/icon/arrow.triangle.pull.png"} alt={"mixer"}/>*/}
-                            Mixer
-                        </div>
-                        <div className={"item"} style={{border: "none"}}>
-                            {/*    Empty     */}
-                        </div>
-                    </div>
-                    <div className={"column"}>
-                        <div className={"item highlighted-item"} id={"virtual-audio-device"}>
-                            <img src={"/icon/arrow.triangle.swap.png"} alt={"Virtual Audio Device"}/>
-                            Virtual Audio Device
-                        </div>
-                        <div className={"item"} id={"speakers"}>
-                            <img src={"/icon/speaker.wave.3.png"} alt={"speakers"}/>
-                            Computer Speakers
-                        </div>
-                    </div>
-                    <div className={"column"}>
-                        <div className={"item"} id={"3rd-party"}>
-                            <img src={"/icon/app.dashed.png"} alt={"3rd Party Software"}/>
-                            3rd Party Software
-                        </div>
-                        <div className={"item"} style={{border: "none"}}>
-                            {/*    Empty     */}
-                        </div>
-                    </div>
-                    <Xarrow start={"computer-microphone"} end={"microphone-effects"}/>
-                    <Xarrow start={"sound-files"} end={"sound-effects"}/>
-                    <Xarrow start={"microphone-effects"} end={"mixer"}/>
-                    <Xarrow start={"sound-effects"} end={"mixer"}/>
-                    <Xarrow start={"mixer"} end={"virtual-audio-device"}/>
-                    <Xarrow start={"sound-effects"} end={"speakers"}/>
-                    <Xarrow start={"virtual-audio-device"} end={"3rd-party"}/>
-                </div>
-            </div>
-
-            <div className={'driver-subsection'}>
-                <h3>Download Driver</h3>
-                <p>Get the driver to start routing audio!</p>
-                <Button
-                    buttonStyle={'btn--primary'}
-                    buttonSize={'btn--large'}
-                    onClick={handleInstallClick}
-                    destination = {'#install'}
-                >
-                    Download Installer
-                </Button>
-                {/*<Button*/}
-                {/*    buttonStyle={'btn--outline'}*/}
-                {/*    buttonSize={'btn--large'}*/}
-                {/*    onClick={handleUninstallClick}*/}
-                {/*    destination = {'#uninstall'}*/}
-                {/*>*/}
-                {/*    Download Uninstaller*/}
-                {/*</Button>*/}
-            </div>
-            <div className={'driver-subsection'}>
-                <h3>Open Source Project</h3>
-                <p>KeySoundboard Virtual Audio Driver is made possible by the open-source project BlackHole, published under a GPL-3.0 License.</p>
-                <p>BlackHole is a modern macOS virtual audio driver that allows applications to pass audio to other applications with zero additional latency. <a href={"https://github.com/ExistentialAudio/BlackHole"} target={"_blank"} rel={"noopener noreferrer"}>BlackHole on GitHub</a></p>
-
-                <p>KeySoundboard's version of BlackHole is published <a href={"https://github.com/hen1227/KeySoundboardDriver"} >here</a>.</p>
-            </div>
-            {showPopup && renderPopup()}
+export default function SoundboardDriverPage() {
+  return (
+    <>
+      <div className="container page-header driver-page-header">
+        <div>
+          <div className="eyebrow">The built-in virtual audio driver</div>
+          <h1>
+            Your sound.
+            <br />
+            <span className="spectrum-text">In good company.</span>
+          </h1>
+          <p>
+            Bring your voice and your favorite effects into calls, streams, and recordings. Here’s
+            how to connect the dots.
+          </p>
+          <a href="#setup" className="button">
+            Let’s get connected
+            <Icon name="arrow" size={17} />
+          </a>
         </div>
-
-        // Generate me an Icon for my MacOS app. The app is a soundboard app that allows the user to press keybinds to play custom sound effects. The app also allows the user to enable their microphone and output the audio to a virtual audio driver. I want the app icon to have very little detail, only simple wave shapes but I want it to be mostly dark with the few details to be colorful!
-    );
+        <RoutingDiagram />
+      </div>
+      <div className="container setup-layout" id="setup">
+        <aside className="setup-sidebar">
+          <span className="eyebrow">Your setup guide</span>
+          <h2>
+            One mix.
+            <br />
+            Every moment.
+          </h2>
+          <p>
+            The virtual microphone carries your complete KeySoundboard mix into any app that lets
+            you choose an audio input.
+          </p>
+          <div className="setup-check">
+            <Icon name="check" size={16} />
+            <span>Built into the Mac app</span>
+          </div>
+          <div className="setup-check">
+            <Icon name="check" size={16} />
+            <span>No separate installer</span>
+          </div>
+          <a href={SUPPORT_URL} className="text-link">
+            Need help connecting?
+            <Icon name="external" size={15} />
+          </a>
+        </aside>
+        <div className="setup-steps">
+          {steps.map((step, index) => (
+            <article className="setup-step" key={step.title}>
+              <span className="setup-step-number">0{index + 1}</span>
+              <div>
+                <h2>{step.title}</h2>
+                <p>{step.text}</p>
+                <p className="step-note">{step.note}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <Showcase
+        reversed
+        eyebrow="See it in the app"
+        title={
+          <>
+            Every route,
+            <br />
+            <span className="spectrum-text">in plain sight.</span>
+          </>
+        }
+        copy="The Audio screen follows your mic and your sounds through their effects to each output, live — so you can see at a glance that your call will hear you."
+        points={['Your mic, its effects, and its level', 'Where every sound goes', 'Pick your input and the app output']}
+        shot="audio"
+        alt="KeySoundboard’s Audio screen: the live microphone, a routing diagram from sources through effects to outputs, and device pickers."
+      />
+      <section className="container driver-manage">
+        <div>
+          <div className="eyebrow">You’re in control</div>
+          <h2 className="section-heading">A little housekeeping.</h2>
+          <p className="section-copy">
+            Check driver status, retry activation, or deactivate the driver in KeySoundboard
+            Settings. If a restart is needed, macOS will let you know.
+          </p>
+        </div>
+        <div className="legacy-panel" id="uninstall">
+          <div className="eyebrow muted">Moving from an older version?</div>
+          <h3>Keep the new. Clear out the old.</h3>
+          <p>
+            If KeySoundboard reports that its older audio plug-in is still present, activate and
+            select the new built-in driver first. Then use the legacy cleanup package.
+          </p>
+          <a className="button button-secondary button-small" href={LEGACY_UNINSTALLER_URL}>
+            Download legacy uninstaller
+            <Icon name="external" size={15} />
+          </a>
+          <small>
+            This is only for older installations. The uninstaller checks the old bundle’s identifier
+            and executable before removing it, leaving unrelated audio drivers alone.
+          </small>
+        </div>
+      </section>
+      <section className="container driver-faq">
+        <h2 className="section-heading">One more thing?</h2>
+        <FAQList items={[faqs[4], faqs[6], faqs[7]]} />
+      </section>
+      <div className="container driver-foundation">
+        <Icon name="wave" size={18} />
+        <p>
+          The current driver is KeySoundboard’s own AudioDriverKit extension, based on{' '}
+          <a href="https://developer.apple.com/documentation/audiodriverkit/creating-an-audio-device-driver">
+            Apple’s permissively licensed audio driver sample
+          </a>
+          .
+        </p>
+      </div>
+    </>
+  );
 }
-
-export default SoundboardDriverPage;

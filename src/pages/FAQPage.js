@@ -1,47 +1,103 @@
-import "./Pages.css";
-import "./FAQ.css";
+import React, { useState } from 'react';
+import { faqs } from '../data/faqs';
+import FAQList from '../components/FAQList';
+import Icon from '../components/Icon';
+import DownloadCTA from '../components/DownloadCTA';
+import { SUPPORT_URL } from '../config';
+import './Pages.css';
+import './FAQ.css';
 
-
-const FAQPage = () => {
-    return (
-        <div className={'subpage'}>
-            <div className={"content"}>
-                <h2>FAQ</h2>
-
-                <div className={"faq-question"}>
-                    <h3>What is KeySoundboard?</h3>
-                    <p>It's a MacOS app that allows you to play your favorite sound effects on your laptop whenever you
-                        want!</p>
-                </div>
-
-                <div className={"faq-question"}>
-                    <h3>How do I add multiple files?</h3>
-                    <p>Simply drag the compatible sounds into the soundboard view!</p>
-                    <img src={'/images/dragAndDrop.gif'} alt={'Add multiple files'}/>
-                </div>
-
-                <div className={"faq-question"}>
-                    <h3>What is the virtual audio device?</h3>
-                    <p>The virtual audio device is a tool that allows you to route audio from one application to
-                        another. This is useful for streaming, recording, and other audio-related tasks.</p>
-                    <p>More information <a href={"/soundboard/driver"}>here</a>.</p>
-                </div>
-
-                <div className={"faq-question"}>
-                    <h3>Why do KeySoundboard want to access my Microphone?</h3>
-                    <p>KeySoundboard will take your microphone audio, add custom sound effects to it, then play it to a virtual microphone where it mixes the audio from your sound effects.</p>
-                    <p>This allows your sounds to be heard in voice calls, AND allows you to add special effects to your voice such has low pitch and high reverb!</p>
-                </div>
-
-                <div className={"faq-question"}>
-                    <h3>Why can't my friends hear the sounds on Discord?</h3>
-                    <p>They can! But you first need to have a virtual audio device installed and your microphone enabled on KeySoundboard. Then you can select the virtual audio device as the output in the Audio Settings tab.</p>
-                    <p>More information <a href={"/soundboard/driver"}>here</a>.</p>
-                </div>
+export default function FAQPage() {
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('All questions');
+  const filtered = faqs.filter(
+    (item) =>
+      (category === 'All questions' || item.category === category) &&
+      [item.question, ...item.answer].join(' ').toLowerCase().includes(search.trim().toLowerCase())
+  );
+  return (
+    <>
+      <div className="container page-header">
+        <div className="eyebrow">A little help goes a long way</div>
+        <h1>
+          Good questions.
+          <br />
+          <span>Sound answers.</span>
+        </h1>
+        <p>
+          Getting started, getting connected, or getting unstuck. Find what you need right here.
+        </p>
+      </div>
+      <div className="container faq-page-content">
+        <aside className="faq-sidebar">
+          <label className="search-field">
+            <Icon name="search" size={18} />
+            <input
+              aria-label="Search questions"
+              placeholder="Find an answer…"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+            {search && (
+              <button
+                className="icon-button"
+                aria-label="Clear search"
+                onClick={() => setSearch('')}
+              >
+                <Icon name="close" size={14} />
+              </button>
+            )}
+          </label>
+          <div className="faq-categories" aria-label="Question categories">
+            {['All questions', 'Getting started', 'Audio & microphone', 'Troubleshooting'].map(
+              (name) => (
+                <button
+                  key={name}
+                  aria-pressed={category === name}
+                  onClick={() => setCategory(name)}
+                >
+                  {name}
+                  <Icon name="chevron" size={14} />
+                </button>
+              )
+            )}
+          </div>
+          <div className="faq-contact">
+            <Icon name="chat" size={22} />
+            <h2>Still need a hand?</h2>
+            <p>We’re an email away.</p>
+            <a href={SUPPORT_URL} className="text-link">
+              Get in touch
+              <Icon name="external" size={15} />
+            </a>
+          </div>
+        </aside>
+        <div>
+          <p className="result-count" role="status">
+            {filtered.length} {filtered.length === 1 ? 'answer' : 'answers'}
+            {search.trim() ? ` for “${search.trim()}”` : ''}
+          </p>
+          {filtered.length ? (
+            <FAQList items={filtered} />
+          ) : (
+            <div className="empty-state">
+              <Icon name="search" size={30} />
+              <h2>No answers found. Yet.</h2>
+              <p>Try a different search, or send us your question.</p>
+              <button
+                className="button button-secondary"
+                onClick={() => {
+                  setSearch('');
+                  setCategory('All questions');
+                }}
+              >
+                Show all questions
+              </button>
             </div>
-
+          )}
         </div>
-    )
+      </div>
+      <DownloadCTA />
+    </>
+  );
 }
-
-export default FAQPage;

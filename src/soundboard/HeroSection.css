@@ -1,77 +1,300 @@
-video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: -1;
+.hero-section {
+  position: relative;
+  overflow: clip;
+  padding-bottom: 40px;
 }
-
-.hero-container {
-  background: url('../../public/images/home.jpg') center center/cover no-repeat;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Slow-moving light behind the hero, in the brand's three hues. */
+.hero-aurora {
+  position: absolute;
+  inset: -20% -10% 0;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.75;
+}
+.hero-aurora span {
+  position: absolute;
+  border-radius: 50%;
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+.hero-aurora span:nth-child(1) {
+  width: 46vw;
+  height: 46vw;
+  left: 46%;
+  top: 4%;
+  background: radial-gradient(circle, rgba(111, 123, 255, 0.34), transparent 65%);
+}
+.hero-aurora span:nth-child(2) {
+  width: 38vw;
+  height: 38vw;
+  left: 66%;
+  top: 30%;
+  background: radial-gradient(circle, rgba(234, 99, 216, 0.22), transparent 65%);
+  animation-duration: 32s;
+  animation-delay: -8s;
+}
+.hero-aurora span:nth-child(3) {
+  width: 34vw;
+  height: 34vw;
+  left: -8%;
+  top: 48%;
+  background: radial-gradient(circle, rgba(178, 107, 255, 0.16), transparent 65%);
+  animation-duration: 38s;
+  animation-delay: -14s;
+}
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-6%, 4%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(4%, -3%, 0) scale(0.96);
+  }
+}
+/* A faint dot grid, fading in towards the screenshot. */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(150, 140, 220, 0.12) 0.8px, transparent 0.8px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 60% 70% at 70% 40%, #000, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 70% 40%, #000, transparent 75%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
+  gap: 24px;
+  padding-top: 72px;
+  padding-bottom: 40px;
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 14px 6px 7px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  color: #d4d1e8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  margin-bottom: 28px;
+}
+.hero-badge .brand-mark {
+  border-radius: 5px;
+}
+.hero-copy h1 {
+  font-size: clamp(52px, 5.7vw, 84px);
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+.hero-copy h1 .spectrum-text {
+  background-size: 200% 100%;
+  animation: spectrum-shift 8s ease-in-out infinite alternate;
+  padding-bottom: 0.08em;
+}
+@keyframes spectrum-shift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+.hero-copy > p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 26px 0 32px;
+  max-width: 440px;
+}
+.hero-copy .button-row {
+  gap: 12px;
+}
+.hero-notes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 26px;
+}
+.hero-notes span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-notes svg {
+  color: var(--accent);
 }
 
-.hero-container > h1 {
-  color: #fff;
-  font-size: 100px;
-  margin-top: -100px;
+/* ---------- The stage: the app window, a key being pressed, the popup it raises ---------- */
+.hero-stage {
+  position: relative;
+  min-height: 520px;
+  perspective: 2200px;
 }
-
-.hero-container > p {
-  margin-top: 8px;
-  color: #fff;
-  font-size: 32px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+.hero-glow {
+  position: absolute;
+  inset: 12% 0 8% 8%;
+  background: var(--spectrum);
+  filter: blur(80px);
+  opacity: 0.32;
+  border-radius: 40%;
 }
-
-.hero-btns {
-  margin-top: 32px;
+.hero-window {
+  position: relative;
+  width: 124%;
+  margin-left: 3%;
+  transform: rotateY(-9deg) rotateX(3deg) translateZ(0);
+  transform-origin: left center;
+  transition: transform 1.2s var(--ease-out);
+  animation: window-float 9s ease-in-out infinite;
 }
-
-.hero-btns .btn {
-  margin: 6px;
-  max-width: 90%;
+.hero-stage:hover .hero-window {
+  transform: rotateY(-6deg) rotateX(2deg);
 }
-
-/*.btn-mobile {*/
-/*  max-width: 90%;*/
-/*}*/
-
-@media screen and (max-width: 960px) {
-  .hero-container > h1 {
-    font-size: 60px;
-    margin-top: -150px;
+.hero-window .app-shot {
+  width: 100%;
+  height: auto;
+}
+@keyframes window-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+.hero-keys {
+  position: absolute;
+  left: 2%;
+  bottom: 4%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-radius: 18px;
+  background: rgba(22, 20, 34, 0.72);
+  border: 1px solid var(--hairline);
+  box-shadow:
+    0 24px 44px -18px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  animation: chip-float 7s ease-in-out infinite;
+}
+.hero-keys .keycap {
+  --depth: 4px;
+  font-size: 22px;
+  min-width: 46px;
+  height: 44px;
+  border-radius: 10px;
+}
+.hero-keys > span {
+  color: var(--faint);
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.hero-hud {
+  position: absolute;
+  right: -2%;
+  top: 2%;
+  z-index: 3;
+  animation:
+    hud-in 0.55s var(--ease-spring) both,
+    chip-float 8s 0.6s ease-in-out infinite;
+}
+@keyframes hud-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes chip-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .hero-container > h1 {
-    font-size: 40px;
-    margin-top: -160px;
-  }
-
-  .hero-container > p {
-    font-size: 24px;
-  }
-
-  .btn-mobile {
-    display: block;
-    text-decoration: none;
-  }
-
-  .btn {
-    width: 95%;
+@media (min-width: 1450px) {
+  .hero-grid {
+    padding-top: 96px;
+    padding-bottom: 60px;
   }
 }
-
-.ratingLbl {
-  font-size: 25px;
+@media (max-width: 1000px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 56px;
+  }
+  .hero-stage {
+    min-height: 0;
+  }
+  .hero-window {
+    width: 108%;
+    margin-left: 0;
+    transform: rotateY(-6deg) rotateX(3deg);
+  }
+  .hero-hud {
+    right: 0;
+    top: 6%;
+  }
+}
+@media (max-width: 700px) {
+  .hero-copy h1 {
+    white-space: normal;
+  }
+  .hero-copy > p {
+    font-size: 16px;
+  }
+  .hero-copy .button-row .button {
+    width: 100%;
+  }
+  .hero-window {
+    width: 118%;
+    transform: none;
+    animation: none;
+  }
+  .hero-keys {
+    padding: 10px 12px 8px;
+    bottom: -4%;
+  }
+  .hero-keys .keycap {
+    font-size: 16px;
+    min-width: 34px;
+    height: 32px;
+  }
+  .hero-hud {
+    width: 230px;
+    top: 10%;
+    right: -4px;
+    transform-origin: top right;
+    scale: 0.82;
+  }
 }
