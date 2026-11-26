@@ -1,6 +1,6 @@
 # KeySoundboard website
 
-The React product website for [KeySoundboard for Mac](https://keyboard.henhen1227.com). Includes features, audio setup, and searchable help.
+The React product website for [KeySoundboard for Mac](https://keysoundboard.com). Includes features, audio setup, and searchable help.
 
 ## Local development
 
@@ -28,7 +28,7 @@ The build is written to `build/`. The existing `npm run deploy` command builds a
 
 ## Hosting and metadata
 
-The site is configured for the root of `keyboard.henhen1227.com`. `public/404.html` restores direct links on GitHub Pages through the root document; hosts with native SPA rewrites can send routes directly to `index.html`. Legacy `/home` and `/soundboard` routes redirect to the homepage, and `/contact` redirects to the support site. The older driver `#install` link leads to the setup steps, and `#uninstall` leads to legacy cleanup.
+The site is configured for the root of `keysoundboard.com`. `public/404.html` restores direct links on GitHub Pages through the root document; hosts with native SPA rewrites can send routes directly to `index.html`. Legacy `/home` and `/soundboard` routes redirect to the homepage, and `/contact` redirects to the support site. The older driver `#install` link leads to the setup steps, and `#uninstall` leads to legacy cleanup.
 
 Page titles, descriptions, canonical links, a sitemap, and the web manifest are included. Google Fonts use system-font fallbacks. Analytics run only in production on the public site hostname, not in local previews or tests.
 

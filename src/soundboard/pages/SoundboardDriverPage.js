@@ -161,7 +161,9 @@ export default function SoundboardDriverPage() {
           <h3>Keep the new. Clear out the old.</h3>
           <p>
             If KeySoundboard reports that its older audio plug-in is still present, activate and
-            select the new built-in driver first. Then use the legacy cleanup package.
+            select the new built-in driver first. Then use the legacy cleanup package. It asks for
+            an administrator password and restarts macOS audio, which drops any call or stream in
+            progress — run it between calls, then open KeySoundboard again.
           </p>
           <a className="button button-secondary button-small" href={LEGACY_UNINSTALLER_URL}>
             Download legacy uninstaller

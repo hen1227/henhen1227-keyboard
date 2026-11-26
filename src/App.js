@@ -72,7 +72,7 @@ function RouteEffects() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
     document
       .querySelector('link[rel="canonical"]')
-      ?.setAttribute('href', 'https://keyboard.henhen1227.com' + pathname);
+      ?.setAttribute('href', 'https://keysoundboard.com' + pathname);
     let target = null;
     try {
       target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
@@ -88,7 +88,7 @@ function RouteEffects() {
     previousPath.current = pathname;
     if (
       process.env.NODE_ENV === 'production' &&
-      window.location.hostname === 'keyboard.henhen1227.com'
+      window.location.hostname === 'keysoundboard.com'
     ) {
       if (!analyticsStarted) {
         ReactGA.initialize('G-BJZ1YSP234');
