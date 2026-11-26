@@ -1,6 +1,6 @@
 # KeySoundboard website
 
-The React product website for [KeySoundboard for Mac](https://keysoundboard.com). Includes features, audio setup, and searchable help.
+The React product website for [KeySoundboard for Mac](https://keysoundboard.com). Includes features, audio setup, and searchable help. Built with Vite and tested with Vitest.
 
 ## Local development
 
@@ -13,17 +13,17 @@ The development site runs at `http://localhost:3000`.
 
 ```sh
 npm run build
-CI=true npm test -- --watchAll=false --runInBand
+npm test -- --run
 ```
 
-The build is written to `build/`. The existing `npm run deploy` command builds and publishes that directory to the repository’s GitHub Pages branch. It is a publishing action; use it only when ready to release.
+The build is written to `build/`; `npm run preview` serves it locally. The existing `npm run deploy` command builds and publishes that directory to the repository’s GitHub Pages branch. It is a publishing action; use it only when ready to release.
 
 ## Site structure
 
 - `src/index.css` contains the design tokens and shared styles.
 - `src/data/faqs.js` supplies the homepage questions and searchable FAQ page.
 - `src/config.js` centralizes the App Store, support, and legacy cleanup destinations.
-- `src/soundboard/pages/SoundboardDriverPage.js` documents the built-in driver. The legacy uninstaller remains available only for older installations; there is no separate current-driver download.
+- `src/soundboard/pages/SoundboardDriverPage.jsx` documents the built-in driver. The legacy uninstaller remains available only for older installations; there is no separate current-driver download.
 - Support lives off this site. Every contact link points at `https://henhen1227.com/support`, and the retired `/contact` route redirects there for saved links.
 
 ## Hosting and metadata

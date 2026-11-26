@@ -6,8 +6,8 @@ import FAQPage from './pages/FAQPage';
 
 beforeEach(() => {
   window.history.replaceState(null, '', '/');
-  window.scrollTo = jest.fn();
-  Element.prototype.scrollIntoView = jest.fn();
+  window.scrollTo = vi.fn();
+  Element.prototype.scrollIntoView = vi.fn();
 });
 
 test('homepage has working download destinations and navigation to setup', async () => {
